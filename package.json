@@ -6,5 +6,11 @@
   "repository": "https://github.com/FritzTheDev/toolbelt-server.git",
   "author": "Frederick Johnson <fritzj96@gmail.com>",
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
