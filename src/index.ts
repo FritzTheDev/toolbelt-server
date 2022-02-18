@@ -4,6 +4,7 @@ import { config } from "dotenv";
 import check from "tiny-invariant";
 import Express, { json } from "express";
 import { authRouter } from "./routers/auth";
+import { fileRouter } from "./routers/file";
 
 // Pull in environmetn variables
 config();
@@ -30,6 +31,9 @@ const port = process.env.PORT || "4200";
 
 // Auth Router: used for logging in, signing up, and resetting passwords
 app.use("/auth", authRouter);
+
+// File Router: used to create collections of URls and
+app.use("/file", fileRouter);
 
 // Bind to the supplied port and start listening for requests
 app.listen(port, () => {
