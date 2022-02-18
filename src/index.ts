@@ -1,9 +1,14 @@
 // Import packages
+import { config } from "dotenv";
 import check from "tiny-invariant";
 import Express, { json } from "express";
 
+// Pull in environmetn variables
+config();
+
 // Startup checks to make sure everything that should be set is
 check(process.env.DATABASE_URL, '"DATABASE_URL" hasn\'t been set. Check your environment variables.');
+check(process.env.DATABASE_URL, '"NODE_ENV" hasn\'t been set. Check your environment variables.');
 
 // Create an instance of the Express "class"
 const app = Express();
