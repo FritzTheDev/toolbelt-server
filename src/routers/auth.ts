@@ -1,5 +1,6 @@
 import { Router } from "express";
 
+// Create the router object
 export const authRouter = Router();
 
 // "Check Token" route the client can hit in order to confirm login status.
