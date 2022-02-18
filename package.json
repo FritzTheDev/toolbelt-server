@@ -7,6 +7,9 @@
   "author": "Frederick Johnson <fritzj96@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
+  "scripts": {
+    "dev": "tsnd src/index.ts"
+  },
   "dependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.18",
