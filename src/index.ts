@@ -3,6 +3,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import check from "tiny-invariant";
 import Express, { json } from "express";
+import { authRouter } from "./routers/auth";
 
 // Pull in environmetn variables
 config();
@@ -24,6 +25,11 @@ app.use(json());
 
 // Select a port to listen for requests on. Default to 4200 if not set.
 const port = process.env.PORT || "4200";
+
+/** Use routers to direct requests. */
+
+// Auth Router: used for logging in, signing up, and resetting passwords
+app.use("/auth", authRouter);
 
 // Bind to the supplied port and start listening for requests
 app.listen(port, () => {
