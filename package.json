@@ -1,0 +1,10 @@
+{
+  "name": "toolbelt-server",
+  "version": "0.1.0",
+  "description": "Backend of a \"Toolbelt\" for employees of The Water Agency, Inc.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/FritzTheDev/toolbelt-server.git",
+  "author": "Frederick Johnson <fritzj96@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true
+}
