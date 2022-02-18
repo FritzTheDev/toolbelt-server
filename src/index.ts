@@ -22,8 +22,8 @@ app.use(cors({ origin: process.env.NODE_ENV === "production" ? process.env.APP_O
 // Enable JSON body parsing
 app.use(json());
 
-// Select a port to listen for requests on. Default to 3000 if not set.
-const port = process.env.PORT || 3000;
+// Select a port to listen for requests on. Default to 4200 if not set.
+const port = process.env.PORT || "4200";
 
 // Bind to the supplied port and start listening for requests
 app.listen(port, () => {
