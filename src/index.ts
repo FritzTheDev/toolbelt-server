@@ -1,4 +1,5 @@
 // Import packages
+import cors from "cors";
 import { config } from "dotenv";
 import check from "tiny-invariant";
 import Express, { json } from "express";
@@ -14,6 +15,10 @@ check(process.env.DATABASE_URL, '"NODE_ENV" hasn\'t been set. Check your environ
 const app = Express();
 
 /** Global Middleware */
+
+// Enable Cross-Origin Request Sharing (CORS) - from anywhere in dev and from APP_ORIGIN in prod
+app.use(cors({ origin: process.env.NODE_ENV === "production" ? process.env.APP_ORIGIN : "*" }));
+
 // Enable JSON body parsing
 app.use(json());
 
