@@ -12,3 +12,61 @@ datasource db {
 
 // ----------------------------------------------------------------------------
 
+// Enumeration of roles for role-based authentication
+
+enum GlobalRole {
+  ADMIN // Just for system administrators. Full read/write access including role management
+  STAFF // Read/write access to owned resources. Read Access to Unowned Resources
+}
+
+// User Model
+model User {
+  id Int @id @default(autoincrement())
+
+  // Metadata
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+
+  // Auth Credentials
+  email        String @unique
+  passwordHash String
+
+  // Email Confirmation & Password Reset Codes
+  passwordResetCode     String?
+  emailConfirmationCode String?
+
+  // Relationships
+  fileCollections FileCollection[]
+}
+
+// A collection of targeted files that can be downloaded all at once.
+model FileCollection {
+  id Int @id @default(autoincrement())
+
+  // Metadata
+  name    String   @unique
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+
+  // Relationships
+  ownerId Int
+  owner   User @relation(fields: [ownerId], references: [id])
+
+  FileTarget FileTarget[]
+}
+
+// A file object with all the infomration needed to download & save the corresponding doc.
+model FileTarget {
+  id Int @id @default(autoincrement())
+
+  // Metadata
+  name String
+
+  // Where to find the file & what to call it.
+  url      String
+  fileName String
+
+  // Relationships
+  fileCollectionId Int
+  collection       FileCollection @relation(fields: [fileCollectionId], references: [id])
+}
